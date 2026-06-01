@@ -1,0 +1,11 @@
+passenger_id,survived,pclass,name,sex,age,fare,cabin,embarked,ticket_count,status
+1,1,1,Alice Smith,female,29.0,211.34,C85,C,1,active
+2,0,3,Bob Jones,male,35.0,7.25,,S,1,active
+3,1,2,Carol White,female,58.0,26.55,C103,S,1,active
+4,0,1,Dave Brown,male,42.0,53.10,,S,2,active
+5,1,3,Eve Davis,female,22.0,8.05,,Q,1,active
+6,0,2,Frank Miller,male,31.0,10.50,,S,1,active
+7,1,1,Grace Wilson,female,55.0,300.00,B28,C,1,active
+8,0,3,Henry Moore,male,19.0,8.66,,S,1,active
+9,1,2,Iris Taylor,female,44.0,27.72,E101,C,1,active
+10,0,1,Jack Anderson,male,37.0,75.25,D6,S,2,active
