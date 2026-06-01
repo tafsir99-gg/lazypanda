@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai-data-cleaner"
+version = "0.1.0"
+description = "Production-grade CLI tool for automated ML dataset cleaning"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    # CLI framework
+    "typer>=0.12.0",
+    "rich>=13.7.0",
+    # Data processing (deterministic — no API cost)
+    "pandas>=2.2.0",
+    "numpy>=1.26.0",
+    "scipy>=1.13.0",
+    # Configuration
+    "pyyaml>=6.0.1",
+    "pydantic>=2.7.0",
+    "python-dotenv>=1.0.1",
+    # AI integration (used sparingly)
+    "google-generativeai>=0.7.0",
+    # Reporting
+    "jinja2>=3.1.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.4.0",
+    "pre-commit>=3.7.0",
+]
+
+[project.scripts]
+# This registers the `adc` command after installation
+adc = "ai_data_cleaner.cli.main:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_data_cleaner"]
+
+# ─── Ruff Linter + Formatter Configuration ────────────────────────────────────
+[tool.ruff]
+src = ["src"]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # Pyflakes (unused imports, undefined names)
+    "I",    # isort (import ordering)
+    "B",    # flake8-bugbear (likely bugs)
+    "UP",   # pyupgrade (modern Python patterns)
+]
+ignore = [
+    "E501", # Line too long — handled by formatter
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["ai_data_cleaner"]
+
+# ─── Pytest Configuration ─────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = [
+    "-v",                    # Verbose output
+    "--tb=short",            # Short traceback format
+    "--cov=ai_data_cleaner", # Measure coverage
+    "--cov-report=term-missing", # Show which lines are not covered
+]

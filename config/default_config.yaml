@@ -1,0 +1,107 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# AI Data Cleaner — Default Configuration
+#
+# HOW TO USE:
+#   This file contains sensible defaults for all cleaning operations.
+#   To customize for a specific project, copy this file and pass it via:
+#     adc clean data.csv --config my_project_config.yaml
+#
+# NEVER edit this file directly for project-specific settings.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─── Dataset Loading ──────────────────────────────────────────────────────────
+dataset:
+  encoding: "utf-8"           # File encoding. Use "latin-1" for some Kaggle datasets
+  delimiter: ","              # Column separator
+  max_rows_for_analysis: 100000  # Cap rows analyzed (for performance on huge datasets)
+
+# ─── Missing Value Strategy ───────────────────────────────────────────────────
+missing_values:
+  # Drop entire COLUMN if this fraction of its values are missing
+  # Example: 0.8 means "drop column if >80% missing"
+  drop_column_threshold: 0.8
+
+  # Drop entire ROW if this fraction of its columns are missing
+  # Example: 0.5 means "drop row if >50% of columns are missing"
+  drop_row_threshold: 0.5
+
+  # How to fill missing values in numeric columns
+  # Options: "mean", "median", "mode", "constant", "none"
+  # Recommendation: "median" is more robust to outliers than "mean"
+  numeric_imputation: "median"
+
+  # How to fill missing values in categorical/text columns
+  # Options: "mode", "constant", "none"
+  categorical_imputation: "mode"
+
+  # Value to use when imputation = "constant"
+  constant_fill_value: "UNKNOWN"
+
+# ─── Duplicate Detection ──────────────────────────────────────────────────────
+duplicates:
+  # Which duplicate to keep when dropping
+  # Options: "first" (keep first occurrence), "last", "none" (drop ALL duplicates)
+  keep: "first"
+
+# ─── Outlier Detection ────────────────────────────────────────────────────────
+outliers:
+  # Detection method
+  # Options: "iqr" (standard), "zscore" (normal distributions), "both"
+  method: "iqr"
+
+  # IQR multiplier: 1.5 = standard, 3.0 = only extreme outliers
+  iqr_multiplier: 1.5
+
+  # Z-score threshold: values beyond this many std deviations are outliers
+  zscore_threshold: 3.0
+
+  # What to do with detected outliers
+  # "flag"  — Add an indicator column (SAFEST — preserves your data)
+  # "cap"   — Replace outliers with boundary values
+  # "drop"  — Drop rows with outliers (use with caution)
+  action: "flag"
+
+# ─── Cardinality Analysis ─────────────────────────────────────────────────────
+cardinality:
+  # Column is "high cardinality" if unique values / total rows > this threshold
+  # Example: 0.95 = flag column if >95% of values are unique
+  high_cardinality_threshold: 0.95
+
+  # Column is "near-constant" if one value appears this fraction of the time
+  # Example: 0.99 = flag if one value appears in >99% of rows
+  near_constant_threshold: 0.99
+
+# ─── Category Consistency ─────────────────────────────────────────────────────
+categories:
+  # Convert all categorical values to lowercase before comparison
+  # Catches "Male" vs "male" vs "MALE" as the same category
+  normalize_case: true
+
+  # Remove leading/trailing whitespace from categorical values
+  strip_whitespace: true
+
+# ─── AI Settings ──────────────────────────────────────────────────────────────
+ai:
+  # Master switch. Set to false to run 100% deterministically (no API calls)
+  enabled: true
+
+  # Hard cap on tokens used per cleaning session
+  # This CANNOT be exceeded — the AI layer will skip rather than exceed this
+  max_tokens_per_run: 2000
+
+  # Cache AI responses to disk to avoid repeated API calls
+  use_cache: true
+
+  # How long a cached response is considered valid (in hours)
+  cache_ttl_hours: 24
+
+# ─── Output Settings ──────────────────────────────────────────────────────────
+output:
+  # Where to save all outputs (relative to where adc is run)
+  directory: "./outputs"
+
+  # What to generate after each run
+  save_cleaned_csv: true       # The cleaned dataset
+  save_markdown_report: true   # Human-readable cleaning report
+  save_json_summary: true      # Machine-readable summary of all issues
+  save_pipeline_script: true   # Reproducible Python script for this cleaning run
