@@ -12,14 +12,12 @@ WHAT WE'RE TESTING:
     8. __repr__ works correctly
 """
 
-from pathlib import Path
 
 import pandas as pd
 import pytest
 
 from ai_data_cleaner.core.dataset import Dataset, DatasetMetadata
 from ai_data_cleaner.utils.exceptions import DatasetLoadError, DatasetValidationError
-
 
 # ─── Load Success Tests ───────────────────────────────────────────────────────
 

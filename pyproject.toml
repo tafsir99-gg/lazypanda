@@ -43,8 +43,7 @@ adc = "ai_data_cleaner.cli.main:app"
 [tool.hatch.build.targets.wheel]
 packages = ["src/ai_data_cleaner"]
 
-[tool.hatch.build.targets.custom]
-path = "."
+
 
 # ─── Ruff Linter + Formatter Configuration ────────────────────────────────────
 [tool.ruff]

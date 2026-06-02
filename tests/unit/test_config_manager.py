@@ -24,7 +24,6 @@ import yaml
 from ai_data_cleaner.core.config_manager import AppConfig, ConfigManager
 from ai_data_cleaner.utils.exceptions import ConfigLoadError, ConfigValidationError
 
-
 # ─── Fixture for a temp config file ───────────────────────────────────────────
 
 def _write_temp_yaml(data: dict) -> Path:

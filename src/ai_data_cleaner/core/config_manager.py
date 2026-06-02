@@ -3,14 +3,14 @@ Configuration Manager for AI Data Cleaner.
 
 ARCHITECTURE NOTE:
     The config system has three layers:
-    
+
     1. DEFAULT CONFIG (config/default_config.yaml)
        Sensible defaults for everything. Never modified by users.
-    
+
     2. USER CONFIG (any .yaml file passed via --config flag)
        Only specifies OVERRIDES. Missing keys fall back to defaults.
        Users don't need to copy the entire default config.
-    
+
     3. VALIDATED CONFIG (ConfigSchema Pydantic model)
        After merging, ALL values are validated by Pydantic.
        If a value is out of range or the wrong type, we fail EARLY

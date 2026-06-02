@@ -2,7 +2,7 @@
 Centralized Rich console configuration.
 
 WHY centralize this?
-    Rich's Console object controls ALL terminal output — colors, tables, 
+    Rich's Console object controls ALL terminal output — colors, tables,
     progress bars. Having one shared instance ensures consistent styling
     and makes it easy to globally disable colors (e.g., for CI pipelines).
 

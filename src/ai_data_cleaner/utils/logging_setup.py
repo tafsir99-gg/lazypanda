@@ -24,15 +24,15 @@ from pathlib import Path
 def setup_logging(log_level: str = "INFO", log_dir: Path | None = None) -> logging.Logger:
     """
     Configure and return the application logger.
-    
+
     Args:
         log_level: Console log level. Options: DEBUG, INFO, WARNING, ERROR.
                    File always logs at DEBUG level.
         log_dir:   Directory to write log files. If None, file logging is skipped.
-    
+
     Returns:
         Configured logger instance for "ai_data_cleaner".
-    
+
     Note:
         Call this ONCE at application startup (in main.py).
         All other modules get the same logger via:
@@ -81,10 +81,10 @@ def setup_logging(log_level: str = "INFO", log_dir: Path | None = None) -> loggi
 def get_logger() -> logging.Logger:
     """
     Get the application logger from any module.
-    
+
     This is a convenience function. After setup_logging() is called once,
     every module can get the same pre-configured logger with this call.
-    
+
     Usage:
         from ai_data_cleaner.utils.logging_setup import get_logger
         logger = get_logger()
