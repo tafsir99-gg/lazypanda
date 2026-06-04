@@ -2,6 +2,75 @@
 
 **LazyPanda** is a professional, production-grade command-line application that analyzes, cleans, and purifies CSV datasets for machine learning projects, Kaggle competitions, and data engineering pipelines. 
 
+## 💻 Live CLI Preview
+
+**1. The Interactive Wizard Setup Block**
+```shell
+┌──────────────────────────────────────────────────────────────┐
+│ LazyPanda 🐼 – Interactive Wizard                            │
+│ Step-by-step guided cleaning mode                            │
+│ Answer each prompt to configure your run.                    │
+└──────────────────────────────────────────────────────────────┘
+
+? Select AI model tier: 
+  gemini-3.5-flash - Blazing fast, high-efficiency default
+❯ gemini-3.1-pro   - Premium Flagship (Deep reasoning)
+  gemini-2.5-flash - Stable production baseline
+  Skip AI / 100% Offline
+✔ Model: gemini-3.1-pro
+[?] Max output tokens (default 8192): 8192
+✔ Token budget: 8,192
+
+⚠ GEMINI_API_KEY not found in environment.
+[?] Enter your Gemini API key (input hidden): ***************************************
+✔ API key set for this session
+[?] Path to your CSV file: /Users/tafsiradm/Downloads/customer_churn_dirty.csv
+✔ Input: /Users/tafsiradm/Downloads/customer_churn_dirty.csv
+[?] Output directory (default ./outputs): /Users/tafsiradm/Downloads/cleaned2
+✔ Output: /Users/tafsiradm/Downloads/cleaned2
+```
+
+**2. The Pre-Cleaning Analysis Progress Phase**
+```shell
+┌──────────────────────────────────────────────────────────────┐
+│ Phase 1: Pre-Cleaning Analysis                               │
+│ Scanning dataset for anomalies and missing values...         │
+└──────────────────────────────────────────────────────────────┘
+
+Running dataset profiling...
+[████████████████████████░░░░░░░░░░░░] 65%
+
+✔ type_inference......... DONE
+✔ missing_values......... DONE
+✔ cardinality............ DONE
+✔ outliers............... DONE
+✔ duplicates............. DONE
+➔ category_consistency... RUNNING
+  suspicious_values...... PENDING
+```
+
+**3. The Final Success Dashboard Matrix**
+```shell
+┌──────────────────────────────────────────────────────────────┐
+│ Phase 2: Cleaning Pipeline + AI (gemini-3.1-pro)             │
+│ Running all cleaners and Gemini AI enrichment...             │
+└──────────────────────────────────────────────────────────────┘
+
+✨ AI Insights: Quality score 85/100 · 5 recommendation(s) · 2890 tokens used
+
+                             Output Artifacts                              
+┌──────────────┬────────────────────────────────────────────────────────┬────────┐
+│ Artifact     │ Path                                                   │ Status │
+├──────────────┼────────────────────────────────────────────────────────┼────────┤
+│ Cleaned CSV  │ .../cleaned2/customer_churn_dirty_cleaned.csv          │ ✔ DONE │
+│ Audit Report │ .../cleaned2/customer_churn_dirty_audit_report.md      │ ✔ DONE │
+│ Dirty Report │ .../cleaned2/customer_churn_dirty_dirty_report.md      │ ✔ DONE │
+└──────────────┴────────────────────────────────────────────────────────┴────────┘
+
+✔ Wizard complete — 3 artifact(s) written to /Users/tafsiradm/Downloads/cleaned2
+```
+
+
 ## ✨ Key Features
 
 1. **Deterministic-First Pipeline:** All detection and cleaning operations are executed locally using strict pandas/numpy rules. Outliers are bounded mathematically, missing values are imputed statistically, and cardinality is resolved deterministically for reproducible, high-speed execution.
