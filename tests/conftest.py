@@ -38,7 +38,7 @@ FIXTURES_DIR = Path(__file__).parent / "fixtures"
 CLEAN_CSV = FIXTURES_DIR / "sample_clean.csv"
 DIRTY_CSV = FIXTURES_DIR / "sample_dirty.csv"
 PROJECT_ROOT = Path(__file__).parent.parent
-DEFAULT_CONFIG_PATH = PROJECT_ROOT / "config" / "default_config.yaml"
+DEFAULT_CONFIG_PATH = PROJECT_ROOT / "src" / "lazypanda" / "config" / "default_config.yaml"
 
 
 # ─── Config fixtures ──────────────────────────────────────────────────────────

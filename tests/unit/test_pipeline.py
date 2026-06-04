@@ -34,7 +34,7 @@ FIXTURES_DIR = Path(__file__).parent.parent / "fixtures"
 DIRTY_CSV = FIXTURES_DIR / "sample_dirty.csv"
 CLEAN_CSV = FIXTURES_DIR / "sample_clean.csv"
 PROJECT_ROOT = Path(__file__).parent.parent.parent
-DEFAULT_CONFIG_PATH = PROJECT_ROOT / "config" / "default_config.yaml"
+DEFAULT_CONFIG_PATH = PROJECT_ROOT / "src" / "lazypanda" / "config" / "default_config.yaml"
 
 
 @pytest.fixture(scope="module")

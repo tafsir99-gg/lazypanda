@@ -45,9 +45,6 @@ lazypanda = "lazypanda.cli.main:main"
 [tool.hatch.build.targets.wheel]
 packages = ["src/lazypanda"]
 
-[tool.hatch.build.targets.wheel.sources]
-"config" = "lazypanda/config"
-
 
 
 # ─── Ruff Linter + Formatter Configuration ────────────────────────────────────

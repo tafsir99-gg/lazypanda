@@ -50,12 +50,7 @@ from lazypanda.utils.exceptions import ConfigLoadError, ConfigValidationError
 logger = logging.getLogger("lazypanda")
 
 # ─── Path to the bundled default config ──────────────────────────────────────
-# First try the package-internal path (used when installed via wheel/uv tool)
-_PKG_CONFIG_PATH = Path(__file__).parent.parent / "config" / "default_config.yaml"
-# Fallback to the source repository structure (used during local development)
-_DEV_CONFIG_PATH = Path(__file__).parent.parent.parent.parent / "config" / "default_config.yaml"
-
-_DEFAULT_CONFIG_PATH = _PKG_CONFIG_PATH if _PKG_CONFIG_PATH.exists() else _DEV_CONFIG_PATH
+_DEFAULT_CONFIG_PATH = Path(__file__).parent.parent / "config" / "default_config.yaml"
 
 
 # ─── Pydantic Schema Models ───────────────────────────────────────────────────
