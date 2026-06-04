@@ -15,14 +15,14 @@ CRITICAL RULE:
 import pandas as pd
 import pytest
 
-from ai_data_cleaner.analyzers.base import AnalysisResult
-from ai_data_cleaner.analyzers.cardinality import CardinalityAnalyzer
-from ai_data_cleaner.analyzers.category_consistency import CategoryConsistencyAnalyzer
-from ai_data_cleaner.analyzers.duplicates import DuplicateAnalyzer
-from ai_data_cleaner.analyzers.missing_values import MissingValueAnalyzer
-from ai_data_cleaner.analyzers.outliers import OutlierAnalyzer
-from ai_data_cleaner.analyzers.suspicious_values import SuspiciousValueAnalyzer
-from ai_data_cleaner.analyzers.type_inference import TypeInferenceAnalyzer
+from lazypanda.analyzers.base import AnalysisResult
+from lazypanda.analyzers.cardinality import CardinalityAnalyzer
+from lazypanda.analyzers.category_consistency import CategoryConsistencyAnalyzer
+from lazypanda.analyzers.duplicates import DuplicateAnalyzer
+from lazypanda.analyzers.missing_values import MissingValueAnalyzer
+from lazypanda.analyzers.outliers import OutlierAnalyzer
+from lazypanda.analyzers.suspicious_values import SuspiciousValueAnalyzer
+from lazypanda.analyzers.type_inference import TypeInferenceAnalyzer
 
 
 # ─────────────────────────────────────────────────────────────────────────────

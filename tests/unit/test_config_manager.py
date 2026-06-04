@@ -21,8 +21,8 @@ from pathlib import Path
 import pytest
 import yaml
 
-from ai_data_cleaner.core.config_manager import AppConfig, ConfigManager
-from ai_data_cleaner.utils.exceptions import ConfigLoadError, ConfigValidationError
+from lazypanda.core.config_manager import AppConfig, ConfigManager
+from lazypanda.utils.exceptions import ConfigLoadError, ConfigValidationError
 
 # ─── Fixture for a temp config file ───────────────────────────────────────────
 
@@ -66,8 +66,8 @@ class TestDefaultConfigLoading:
     def test_default_ai_enabled_is_true(self, default_config):
         assert default_config.ai.enabled is True
 
-    def test_default_ai_max_tokens_is_2000(self, default_config):
-        assert default_config.ai.max_tokens_per_run == 2000
+    def test_default_ai_max_tokens_is_8000(self, default_config):
+        assert default_config.ai.max_tokens_per_run == 8000
 
     def test_default_normalize_case_is_true(self, default_config):
         assert default_config.categories.normalize_case is True

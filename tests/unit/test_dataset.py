@@ -16,8 +16,8 @@ WHAT WE'RE TESTING:
 import pandas as pd
 import pytest
 
-from ai_data_cleaner.core.dataset import Dataset, DatasetMetadata
-from ai_data_cleaner.utils.exceptions import DatasetLoadError, DatasetValidationError
+from lazypanda.core.dataset import Dataset, DatasetMetadata
+from lazypanda.utils.exceptions import DatasetLoadError, DatasetValidationError
 
 # ─── Load Success Tests ───────────────────────────────────────────────────────
 

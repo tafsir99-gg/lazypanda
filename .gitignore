@@ -66,3 +66,8 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# ─── LazyPanda Caches & Outputs ───────────────────────────────────────────────
+.adc_cache/
+panda_test/
+*_adc_report/

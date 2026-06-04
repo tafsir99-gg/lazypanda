@@ -4,7 +4,7 @@
 # HOW TO USE:
 #   This file contains sensible defaults for all cleaning operations.
 #   To customize for a specific project, copy this file and pass it via:
-#     adc clean data.csv --config my_project_config.yaml
+#     lazypanda clean data.csv --config my_project_config.yaml
 #
 # NEVER edit this file directly for project-specific settings.
 # ─────────────────────────────────────────────────────────────────────────────
@@ -86,8 +86,9 @@ ai:
   enabled: true
 
   # Hard cap on tokens used per cleaning session
+  # Gemini Flash costs ~$0.075/1M tokens — 8000 tokens ≈ $0.0006 per run
   # This CANNOT be exceeded — the AI layer will skip rather than exceed this
-  max_tokens_per_run: 2000
+  max_tokens_per_run: 8000
 
   # Cache AI responses to disk to avoid repeated API calls
   use_cache: true
@@ -97,7 +98,7 @@ ai:
 
 # ─── Output Settings ──────────────────────────────────────────────────────────
 output:
-  # Where to save all outputs (relative to where adc is run)
+  # Where to save all outputs (relative to where lazypanda is run)
   directory: "./outputs"
 
   # What to generate after each run

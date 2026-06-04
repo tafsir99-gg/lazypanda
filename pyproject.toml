@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ai-data-cleaner"
+name = "lazypanda"
 version = "0.1.0"
 description = "Production-grade CLI tool for automated ML dataset cleaning"
 readme = "README.md"
@@ -14,6 +14,7 @@ dependencies = [
     # CLI framework
     "typer>=0.12.0",
     "rich>=13.7.0",
+    "questionary>=2.0.0",
     # Data processing (deterministic — no API cost)
     "pandas>=2.2.0",
     "numpy>=1.26.0",
@@ -22,11 +23,12 @@ dependencies = [
     "pyyaml>=6.0.1",
     "pydantic>=2.7.0",
     "python-dotenv>=1.0.1",
-    # AI integration (used sparingly)
-    "google-generativeai>=0.7.0",
+    # AI integration (used sparingly — only for natural language insights)
+    "google-genai>=0.8.0",
     # Reporting
     "jinja2>=3.1.4",
 ]
+
 
 [dependency-groups]
 dev = [
@@ -37,11 +39,11 @@ dev = [
 ]
 
 [project.scripts]
-# This registers the `adc` command after installation
-adc = "ai_data_cleaner.cli.main:app"
+# This registers the `lazypanda` command after installation
+lazypanda = "lazypanda.cli.main:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/ai_data_cleaner"]
+packages = ["src/lazypanda"]
 
 
 
@@ -65,7 +67,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["ai_data_cleaner"]
+known-first-party = ["lazypanda"]
 
 # ─── Pytest Configuration ─────────────────────────────────────────────────────
 [tool.pytest.ini_options]
@@ -74,6 +76,6 @@ pythonpath = ["src"]
 addopts = [
     "-v",                    # Verbose output
     "--tb=short",            # Short traceback format
-    "--cov=ai_data_cleaner", # Measure coverage
+    "--cov=lazypanda", # Measure coverage
     "--cov-report=term-missing", # Show which lines are not covered
 ]

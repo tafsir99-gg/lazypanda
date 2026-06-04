@@ -29,8 +29,8 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from ai_data_cleaner.core.config_manager import AppConfig, ConfigManager
-from ai_data_cleaner.core.dataset import Dataset
+from lazypanda.core.config_manager import AppConfig, ConfigManager
+from lazypanda.core.dataset import Dataset
 
 # ─── Path helpers ─────────────────────────────────────────────────────────────
 
